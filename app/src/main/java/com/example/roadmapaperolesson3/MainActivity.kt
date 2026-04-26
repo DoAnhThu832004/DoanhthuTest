@@ -11,17 +11,26 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.collectAsState
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.roadmapaperolesson3.ui.theme.RoadMapAperoLesson3Theme
 
+import dagger.hilt.android.AndroidEntryPoint
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            val viewModel: MainViewModel = hiltViewModel()
+            val message by viewModel.uiState.collectAsState()
+
             RoadMapAperoLesson3Theme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
-                        name = "Android",
+                        name = message,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }

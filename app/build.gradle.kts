@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.hilt)
     alias(libs.plugins.google.devtools.ksp)
-    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -66,8 +66,8 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
     implementation("androidx.datastore:datastore-preferences:1.0.0")
 
-    implementation("com.google.dagger:hilt-android:2.48")
-    ksp("com.google.dagger:hilt-compiler:2.48")
-
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
 }
