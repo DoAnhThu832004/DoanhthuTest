@@ -15,6 +15,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.roadmapaperolesson3.ui.theme.RoadMapAperoLesson3Theme
+import com.example.roadmapaperolesson3.view.FreeCountScreen
+import com.example.roadmapaperolesson3.view.SaveName
+import com.example.roadmapaperolesson3.viewmodel.MainViewModel
 
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,31 +29,23 @@ class MainActivity : ComponentActivity() {
         setContent {
             val viewModel: MainViewModel = hiltViewModel()
             val message by viewModel.uiState.collectAsState()
-
+            val freeCount by viewModel.freeCount.collectAsState()
+            val nameUser by viewModel.nameUser.collectAsState()
+            val errorMessage by viewModel.errorMessage.collectAsState()
             RoadMapAperoLesson3Theme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = message,
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+//                FreeCountScreen(
+//                    count = freeCount,
+//                    onIncrementClick = {viewModel.incrementFreeCount()},
+//                    onResetClick = {viewModel.resetFreeCount()},
+//                    onDecrementClick = {viewModel.decrementFreeCount()}
+//                )
+                SaveName(
+                    name = nameUser,
+                    onNameChange = {viewModel.updateUserName(it)},
+                    errorMessage = errorMessage,
+                    onErrorDismiss = {viewModel.clearError()}
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    RoadMapAperoLesson3Theme {
-        Greeting("Android")
     }
 }

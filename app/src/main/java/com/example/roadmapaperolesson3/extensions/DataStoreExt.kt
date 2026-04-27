@@ -1,0 +1,17 @@
+package com.example.roadmapaperolesson3.extensions
+
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.emptyPreferences
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import java.io.IOException
+
+fun Flow<Preferences>.catchIOException(): Flow<Preferences> {
+    return this.catch {
+        if(it is IOException) {
+            emit(emptyPreferences())
+        } else {
+            throw it
+        }
+    }
+}
