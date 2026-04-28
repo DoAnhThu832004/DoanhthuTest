@@ -1,9 +1,10 @@
-package com.example.roadmapaperolesson3.view
+package com.example.roadmapaperolesson3.view.datastore
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -58,7 +59,7 @@ fun SaveName(
     }
     Column(
         modifier = modifier
-            .fillMaxWidth()
+            .fillMaxSize()
             .statusBarsPadding(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally

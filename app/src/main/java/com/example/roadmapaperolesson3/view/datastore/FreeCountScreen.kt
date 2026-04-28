@@ -1,6 +1,5 @@
-package com.example.roadmapaperolesson3.view
+package com.example.roadmapaperolesson3.view.datastore
 
-import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row

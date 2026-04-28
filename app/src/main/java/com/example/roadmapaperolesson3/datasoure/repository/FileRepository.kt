@@ -27,4 +27,7 @@ class FileRepository @Inject constructor(
     fun clearCache(fileName: String) {
         File(context.cacheDir,fileName).delete()
     }
+    fun getListFileCache(): List<File> {
+        return context.cacheDir.listFiles()?.toList() ?: emptyList()
+    }
 }
